@@ -19,15 +19,11 @@ class Dot_net < Base_centos
 			Python.new( "provision/ssh/provision.py" ),
 
 			Python.new( "provision/systemd/cp.py",
-				args: [
-						'dotnet/sigrha_clients.service',
-					] ),
+				args: [ 'dotnet/sigrha_clients.service' ] ),
 
 			# Added opportunities_service
 			Python.new( "provision/systemd/cp.py",
-				args: [
-						'dotnet/sigrha_opportunities.service',
-					] ),
+				args: [ 'dotnet/sigrha_opportunities.service' ] ),
 
 			Python.new( "provision/git_clone.py",
 				args: [

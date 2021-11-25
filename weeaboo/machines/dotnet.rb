@@ -47,12 +47,12 @@ class Dot_net < Base_centos
 					'/etc/systemd/system/sigrha_clients.env',
 				] ),
 
-				# Added migration for opportunities
-				Script.new( "provision/dotnet/database_migration.sh",
-					args: [
-						'/home/chibi/projects/opportunities_service__main/Opportunities/',
-						'/etc/systemd/system/sigrha_opportunities.env',
-					] ),
+			# Added migration for opportunities
+			Script.new( "provision/dotnet/database_migration.sh",
+				args: [
+					'/home/chibi/projects/opportunities_service__main/Opportunities/',
+					'/etc/systemd/system/sigrha_opportunities.env',
+				] ),
 
 			Python.new( "provision/systemd/systemd.py",
 				args: [ 'enable', 'sigrha_clients.service' ] ),

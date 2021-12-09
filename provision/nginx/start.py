@@ -44,7 +44,8 @@ for folder in folders:
 sites_enabled = nginx_folder + 'sites_enabled'
 sites_available = nginx_folder + 'sites_available'
 
-configs = [ 'default.conf', 'sigrha_react.conf', 'sigrha_client.conf' ]
+configs = [
+    'default.conf', 'sigrha_react.conf', 'sigrha_client.conf', 'waifus.conf' ]
 
 for config in configs:
     if not ( sites_enabled + config ).exists:

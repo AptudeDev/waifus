@@ -20,6 +20,10 @@ class Dot_net < Base_centos
 
 			Python.new( "provision/systemd/cp.py",
 				args: [ 'dotnet/sigrha_clients.service' ] ),
+			Python.new( "provision/systemd/cp.py",
+				args: [ 'dotnet/sigrha_opportunities.service' ] ),
+			Python.new( "provision/systemd/cp.py",
+				args: [ 'dotnet/sigrha_gateway.service' ] ),
 
 			Python.new( "provision/git_clone.py",
 				args: [
@@ -36,17 +40,39 @@ class Dot_net < Base_centos
 					'git@github.com:AptudeSiGRHA/ADLoginService.git',
 					'main',
 				] ),
+			Python.new( "provision/git_clone.py",
+				args: [
+					'git@github.com:AptudeSiGRHA/Gateway.git',
+					'main',
+				] ),
 
 			Script.new( "provision/dotnet/database_migration.sh",
 				args: [
 					'/home/chibi/projects/clients_service__main/API_Clients/',
 					'/etc/systemd/system/sigrha_clients.env',
 				] ),
+			Script.new( "provision/dotnet/database_migration.sh",
+				args: [
+					'/home/chibi/projects/opportunities_service__main/Opportunities/',
+					'/etc/systemd/system/sigrha_opportunities.env',
+				] ),
+			Script.new( "provision/dotnet/build_project.sh",
+				args: [
+					'/home/chibi/projects/Gateway__main/Gateway/Gateway/',
+				] ),
 
 			Python.new( "provision/systemd/systemd.py",
 				args: [ 'enable', 'sigrha_clients.service' ] ),
 			Python.new( "provision/systemd/systemd.py",
 				args: [ 'start', 'sigrha_clients.service' ] ),
+			Python.new( "provision/systemd/systemd.py",
+				args: [ 'enable', 'sigrha_opportunities.service' ] ),
+			Python.new( "provision/systemd/systemd.py",
+				args: [ 'start', 'sigrha_opportunities.service' ] ),
+			Python.new( "provision/systemd/systemd.py",
+				args: [ 'enable', 'sigrha_gateway.service' ] ),
+			Python.new( "provision/systemd/systemd.py",
+				args: [ 'start', 'sigrha_gateway.service' ] ),
 		]
 	end
 end

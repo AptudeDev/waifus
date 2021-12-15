@@ -17,7 +17,8 @@ class Nodejs < Base_centos
 			Python.new( "provision/ssh/provision.py" ),
 			Python.new( "provision/git_clone.py",
 				args: [
-					'git@github.com:AptudeSiGRHA/sigrha-react.git',
+					'git@github.com:AptudeSiGRHA/sigrha-react.git', 
+					'features/opportunities/main',
 					'main' ] ),
 			Script.new( "provision/nodejs/provison_repo.sh",
 				args: [ '/home/chibi/projects/sigrha-react__main' ] ),

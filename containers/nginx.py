@@ -11,7 +11,8 @@ class Nginx( Centos_7 ):
 class Ikaros( Nginx ):
     extra_hosts = (
         'kibana', 'waifus', 'sigrha.com.mx',
-        'api.sigrha.client.aptude.com' )
+        'api.sigrha.client.aptude.com',
+        'api.sigrha.opportunities.aptude.com' )
 
 
 class Astraea( Nginx ):

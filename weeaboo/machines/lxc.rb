@@ -6,7 +6,7 @@ class LXC < Base_centos
 		@abstract = true
 		@name = 'LXC'
 		@box = "base_centos_7"
-		@ram = 1024
+		@ram = 5000
 		@scripts = [
 			Script.new( "provision/update_python_lib.sh" ),
 			Python.new( "provision/add_user.py",

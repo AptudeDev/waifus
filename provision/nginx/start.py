@@ -45,7 +45,7 @@ sites_enabled = nginx_folder + 'sites_enabled'
 sites_available = nginx_folder + 'sites_available'
 
 configs = [
-    'default.conf', 'sigrha_react.conf', 'sigrha_client.conf',
+    'sigrha_react.conf', 'sigrha_client.conf',
     'sigrha_opportunities.conf', 'waifus.conf' ]
 
 for config in configs:

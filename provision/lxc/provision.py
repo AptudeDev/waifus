@@ -33,6 +33,11 @@ if __name__ == "__main__":
             ssh_key.chmod( 0o0777 )
             ssh_key.chown( user_name='chibi', group_name='chibi', )
 
+    Chibi_path( '/etc/security/limits.conf' ).open().write(
+        """
+*    soft    nofile 65536
+*    hard    nofile 65536
+        """ )
     first_machine = lxc.Create( '-n', 'test_machine' )
     first_machine.template( 'download' )
     first_machine.parameters(
@@ -44,7 +49,8 @@ if __name__ == "__main__":
     cd( '/home/chibi/projects/waifus__master' )
     Command(
         'chibi_lxc', 'up',
-        'Chii', 'Asuka', 'Mitsuha', 'Ikaros' ).run()
+        'Chii', 'Chino', 'Asuka', 'Mitsuha', 'Ikaros',
+        'Misuzu' ).run()
     #Command(
     #    'chibi_lxc', 'provision',
     #    'Ikaros', 'Chii', 'Asuka', 'Mitsuha' ).run()

@@ -15,7 +15,7 @@ from chibi.file.other import Chibi_systemd
 
 
 basic_config()
-masters = [ 'Pitou', 'Misuzu' ]
+masters = [ 'Misuzu' ]
 provision_folder = (
     Chibi_path( os.environ[ 'PROVISION_PATH' ] ) + 'elasticsearch/provision' )
 

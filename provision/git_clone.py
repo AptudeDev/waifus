@@ -48,6 +48,7 @@ if git_repo_branch:
 cowsay( f"clonando {git_repo_url} en {git_folder}" )
 if git_folder.exists:
     logger.info( f"repo en {git_folder}" )
+    Git.checkout( branch='.', src=git_folder )
     Git.checkout_track( branch=git_repo_branch, src=git_folder )
     Git.pull( src=git_folder )
     logger.info( f"pull repo {git_folder}" )

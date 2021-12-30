@@ -1,12 +1,18 @@
 Dir[ File.dirname(__FILE__) + "/base.rb" ].each { |file| require file }
 
 class Nodejs < Base_centos
-	def initialize()
-		super
+	def initialize(
+			repo='git@github.com:AptudeSiGRHA/sigrha-react.git',
+			branch='main', repo_name='main' )
+		super()
 		@abstract = true
-		@name = 'Nginx'
+		@name = 'Nodejs'
 		@box = "base_centos_7"
 		@ram = 3072
+		@repo = repo
+		@branch = branch
+		@repo_name = repo_name
+
 		@scripts = [
 			Script.new( "provision/update_python_lib.sh" ),
 			Python.new( "provision/add_user.py",
@@ -16,9 +22,7 @@ class Nodejs < Base_centos
 			Script.new( "provision/nodejs/install.sh" ),
 			Python.new( "provision/ssh/provision.py" ),
 			Python.new( "provision/git_clone.py",
-				args: [
-					'git@github.com:AptudeSiGRHA/sigrha-react.git',
-					'main' ] ),
+				args: [ @repo, @branch, @repo_name ] ),
 			Script.new( "provision/nodejs/provison_repo.sh",
 				args: [ '/home/chibi/projects/sigrha-react__main' ] ),
 
@@ -33,9 +37,23 @@ class Nodejs < Base_centos
 end
 
 class Asuka < Nodejs
+	attr_accessor :repo, :branch, :repo_name
 	def initialize()
-		super
+		super(
+			repo='git@github.com:AptudeSiGRHA/sigrha-react.git',
+			branch='main', repo_name='main' )
 		@abstract = false
 		@name = 'Asuka'
+	end
+end
+
+class Kurumi < Nodejs
+	attr_accessor :repo, :branch, :repo_name
+	def initialize()
+		super(
+			repo='git@github.com:AptudeSiGRHA/sigrha-react.git',
+			branch='releasecandidate', repo_name='main' )
+		@abstract = false
+		@name = 'Kurumi'
 	end
 end

@@ -1,0 +1,27 @@
+[Unit]
+Description=sigrha users gunicorn daemon
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+User=chibi
+Group=chibi
+
+PIDFile=/run/gunicorn/pid
+# RuntimeDirectory=gunicorn
+EnvironmentFile=/etc/systemd/system/sigrha_users.env
+WorkingDirectory=/home/chibi/projects/sigrha_users__master
+ExecStart=/usr/local/bin/gunicorn \
+	-w $SIGRHA_USERS__WEB__THREADS \
+	--worker-class gevent -b 0.0.0.0:8000 sigrha_users.wsgi
+
+ExecStop=/bin/kill -s TERM $MAINPID
+ExecReload=/bin/kill -s HUP $MAINPID
+
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

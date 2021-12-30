@@ -22,7 +22,7 @@ class Provision
 			SQL_server: [ Misaka ],
 			Nodejs: [ Asuka, Kurumi ],
 			LXC: [ Koko ],
-			Dot_net: [Mitsuha],
+			Dot_net: [ Mitsuha, Kaoru ],
 		}
 	end
 

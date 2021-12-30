@@ -1,0 +1,19 @@
+[Unit]
+Description=API Gateway service
+
+[Service]
+Type=forking
+User=chibi
+Group=chibi
+
+WorkingDirectory=/home/chibi/projects/Gateway__main/Gateway/Gateway/bin/Release/netcoreapp3.1/
+ExecStart=/usr/share/dotnet/dotnet /home/chibi/projects/Gateway__main/Gateway/Gateway/bin/Release/netcoreapp3.1/Gateway.dll
+
+KillSignal=SIGINT
+SyslogIdentifier=gateway_service
+
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

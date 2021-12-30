@@ -3,7 +3,7 @@ Dir[ File.dirname(__FILE__) + "/base.rb" ].each { |file| require file }
 class Nodejs < Base_centos
 	def initialize(
 			repo='git@github.com:AptudeSiGRHA/sigrha-react.git',
-			branch='main', repo_name='main' )
+			branch='main', repo_name='main', service_name='sigrha_react' )
 		super()
 		@abstract = true
 		@name = 'Nodejs'
@@ -12,6 +12,7 @@ class Nodejs < Base_centos
 		@repo = repo
 		@branch = branch
 		@repo_name = repo_name
+		@service_name = service_name
 
 		@scripts = [
 			Script.new( "provision/update_python_lib.sh" ),
@@ -27,11 +28,11 @@ class Nodejs < Base_centos
 				args: [ '/home/chibi/projects/sigrha-react__main' ] ),
 
 			Python.new( "provision/systemd/cp.py",
-				args: [ 'nodejs/sigrha_react.service' ] ),
+				args: [ "nodejs/#{@service_name}.service" ] ),
 			Python.new( "provision/systemd/systemd.py",
-				args: [ 'enable', 'sigrha_react.service' ] ),
+				args: [ 'enable', "#{@service_name}.service" ] ),
 			Python.new( "provision/systemd/systemd.py",
-				args: [ 'start', 'sigrha_react.service' ] ),
+				args: [ 'start', "#{@service_name}.service" ] ),
 		]
 	end
 end
@@ -41,7 +42,7 @@ class Asuka < Nodejs
 	def initialize()
 		super(
 			repo='git@github.com:AptudeSiGRHA/sigrha-react.git',
-			branch='main', repo_name='main' )
+			branch='main', repo_name='main', service_name="sigrha_react" )
 		@abstract = false
 		@name = 'Asuka'
 	end
@@ -52,7 +53,8 @@ class Kurumi < Nodejs
 	def initialize()
 		super(
 			repo='git@github.com:AptudeSiGRHA/sigrha-react.git',
-			branch='releasecandidate', repo_name='main' )
+			branch='releasecandidate', repo_name='main',
+			service_name="sigrha_react_test" )
 		@abstract = false
 		@name = 'Kurumi'
 	end

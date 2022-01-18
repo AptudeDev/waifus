@@ -45,7 +45,7 @@ class Dotnet( Centos_7 ):
             '/etc/systemd/system/sigrha_opportunities.env',
         ),
         (
-            'provision/dotnet/build_project.sh',
+            'dotnet/build_project.sh',
             '/home/chibi/projects/Gateway__main/Gateway/Gateway/',
         ),
         ( "systemd/systemd.py", 'enable', 'cls.client_service' ),

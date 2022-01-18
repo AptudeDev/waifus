@@ -49,7 +49,10 @@ if __name__ == "__main__":
     cd( '/home/chibi/projects/waifus__master' )
     Command(
         'chibi_lxc', 'up',
-        'Chii', 'Chino', 'Asuka', 'Mitsuha', 'Ikaros',
+        'Chii',
+        #'Chii', 'Chino',
+        'Asuka', 'Mitsuha', 'Kurumi', 'Kaoru'
+        'Ikaros',
         'Misuzu' ).run()
     #Command(
     #    'chibi_lxc', 'provision',

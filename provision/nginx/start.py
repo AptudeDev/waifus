@@ -46,7 +46,8 @@ sites_available = nginx_folder + 'sites_available'
 
 configs = [
     'sigrha_react.conf', 'sigrha_client.conf',
-    'sigrha_opportunities.conf', 'waifus.conf', 'sigrha_users.conf' ]
+    'sigrha_opportunities.conf', 'waifus.conf', 'sigrha_users.conf',
+    'sigrha_gateway.conf' ]
 
 for config in configs:
     if not ( sites_enabled + config ).exists:

@@ -2,30 +2,38 @@ from .base import Centos_7
 
 
 class Dotnet( Centos_7 ):
+    client_branch = 'main'
+    client_service = 'sigrha_clients.service'
+    client_service_path = 'dotnet/sigrha_clients.service'
+
+    gateway_branch = 'main'
+    gateway_service = 'sigrha_gateway.service'
+    gateway_service_path = 'dotnet/sigrha_gateway.service'
+
+    opportunities_branch = 'main'
+    opportunities_service_path = 'dotnet/sigrha_opportunities.service'
+    opportunities_service = 'sigrha_opportunities.service'
+
     scripts = (
         'ssh/provision.py',
-        ( "systemd/cp.py", 'dotnet/sigrha_clients.service' ),
-        ( "systemd/cp.py", 'dotnet/sigrha_opportunities.service' ),
-        ( "systemd/cp.py", 'dotnet/sigrha_gateway.service' ),
+        ( "systemd/cp.py", 'cls.client_service_path' ),
+        ( "systemd/cp.py", 'cls.opportunities_service_path' ),
+        ( "systemd/cp.py", 'cls.gateway_service_path' ),
 
         'dotnet/install.py',
         'dotnet/post_install.sh',
         (
             'git_clone.py',
             'git@github.com:AptudeSiGRHA/clients_service.git',
-            'main' ),
+            'cls.client_branch', 'main' ),
         (
             'git_clone.py',
             'git@github.com:AptudeSiGRHA/opportunities_service.git',
-            'main' ),
-        (
-            'git_clone.py',
-            'git@github.com:AptudeSiGRHA/ADLoginService.git',
-            'main' ),
+            'cls.opportunities_branch', 'main' ),
         (
             'git_clone.py',
             'git@github.com:AptudeSiGRHA/Gateway.git',
-            'main' ),
+            'cls.gateway_branch', 'main' ),
         (
             'dotnet/database_migration.sh',
             '/home/chibi/projects/clients_service__main/API_Clients/',
@@ -40,14 +48,14 @@ class Dotnet( Centos_7 ):
             'provision/dotnet/build_project.sh',
             '/home/chibi/projects/Gateway__main/Gateway/Gateway/',
         ),
-        ( "systemd/systemd.py", 'enable', 'sigrha_clients.service' ),
-        ( "systemd/systemd.py",'start', 'sigrha_clients.service' ),
+        ( "systemd/systemd.py", 'enable', 'cls.clients_service' ),
+        ( "systemd/systemd.py", 'start', 'cls.clients_service' ),
 
-        ( "systemd/systemd.py", 'enable', 'sigrha_opportunities.service' ),
-        ( "systemd/systemd.py",'start', 'sigrha_opportunities.service' ),
+        ( "systemd/systemd.py", 'enable', 'cls.opportunities_service' ),
+        ( "systemd/systemd.py", 'start', 'cls.opportunities_service' ),
 
-        ( "systemd/systemd.py", 'enable', 'sigrha_gateway.service' ),
-        ( "systemd/systemd.py",'start', 'sigrha_gateway.service' ),
+        ( "systemd/systemd.py", 'enable', 'cls.gateway_service' ),
+        ( "systemd/systemd.py", 'start', 'cls.gateway_service' ),
     )
     env_vars = {
         'HOME': '/root/'
@@ -56,3 +64,18 @@ class Dotnet( Centos_7 ):
 
 class Mitsuha( Dotnet ):
     pass
+
+
+class Kaoru( Dotnet ):
+    client_branch = 'development'
+    opportunities_branch = 'development'
+    gateway_branch = 'development'
+
+    client_service = 'sigrha_clients_test.service'
+    client_service_path = 'dotnet/sigrha_clients_test.service'
+
+    gateway_service = 'sigrha_gateway.service_test'
+    gateway_service_path = 'dotnet/sigrha_gateway_test.service'
+
+    opportunities_service_path = 'dotnet/sigrha_opportunities_test.service'
+    opportunities_service = 'sigrha_opportunities_test.service'

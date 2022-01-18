@@ -2,21 +2,32 @@ from .base import Centos_7
 
 
 class Nodejs( Centos_7 ):
+    branch = 'main'
+    service_path = 'nodejs/sigrha_react.service'
+    service_name = 'sigrha_react.service'
+
     scripts = (
         'nodejs/install.sh',
         'ssh/provision.py',
         (
             'git_clone.py',
-            'git@github.com:AptudeSiGRHA/sigrha-react.git', 'main' ),
+            'git@github.com:AptudeSiGRHA/sigrha-react.git',
+            'cls.branch', 'main' ),
         'nodejs/install.sh',
         (
             "nodejs/provison_repo.sh",
             '/home/chibi/projects/sigrha-react__main/' ),
-        ( "systemd/cp.py", 'nodejs/sigrha_react.service' ),
-        ( "systemd/systemd.py", 'enable', 'sigrha_react.service' ),
-        ( "systemd/systemd.py",'start', 'sigrha_react.service' ),
+        ( "systemd/cp.py", 'cls.service_path' ),
+        ( "systemd/systemd.py", 'enable', 'cls.service_name' ),
+        ( "systemd/systemd.py", 'start', 'cls.service_name' ),
     )
 
 
 class Asuka( Nodejs ):
-    pass
+    branch = 'main'
+
+
+class Kurumi( Nodejs ):
+    branch = 'releasecandidate'
+    service_path = 'nodejs/sigrha_react_test.service'
+    service_name = 'sigrha_react_test.service'

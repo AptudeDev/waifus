@@ -10,8 +10,8 @@ from containers.elasticsearch import Misuzu, Pitou, Rei, Rem, Sakura
 from containers.nginx import Ikaros, Astraea, Caos, Nymph
 from containers.mariadb import Chii, Freya, Sumomo
 from containers.rabbitmq import Chino, Cocoa, Rize
-from containers.nodejs import Asuka
-from containers.dotnet import Mitsuha
+from containers.nodejs import Asuka, Kurumi
+from containers.dotnet import Mitsuha, Kaoru
 
 
 configuration.chibi_lxc.containers.add( Centos_7 )
@@ -35,5 +35,7 @@ configuration.chibi_lxc.containers.add( Cocoa )
 configuration.chibi_lxc.containers.add( Rize )
 configuration.chibi_lxc.containers.add( Asuka )
 configuration.chibi_lxc.containers.add( Mitsuha )
+configuration.chibi_lxc.containers.add( Kurumi )
+configuration.chibi_lxc.containers.add( Kaoru )
 
 configuration.chibi_lxc.hosts = Chibi_path( 'hosts' )

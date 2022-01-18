@@ -38,13 +38,13 @@ if __name__ == "__main__":
 *    soft    nofile 65536
 *    hard    nofile 65536
         """ )
+    first_machine = lxc.Destroy( '-n', 'test_machine' )
     first_machine = lxc.Create( '-n', 'test_machine' )
     first_machine.template( 'download' )
     first_machine.parameters(
         '-d', 'centos', '-r', '7', '--arch', 'amd64', '--keyserver',
         'hkp://keyserver.ubuntu.com' )
     first_machine.run()
-    #first_machine = lxc.Destroy( '-n', 'asdf' )
 
     cd( '/home/chibi/projects/waifus__master' )
     Command(

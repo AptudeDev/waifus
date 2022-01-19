@@ -12,10 +12,11 @@ class Ikaros( Nginx ):
     extra_hosts = (
         'kibana', 'waifus', 'sigrha.com.mx',
         'api.sigrha.client.aptude.com',
-        'api.sigrha.opportunities.aptude.com'
-        'api.sandbox.client.aptude.com'
-        'api.sandbox.opportunities.aptude.com'
-        'api.sandbox.aptude.com'
+        'api.sigrha.opportunities.aptude.com',
+        'api.sandbox.client.aptude.com',
+        'api.sandbox.opportunities.aptude.com',
+        'api.sandbox.aptude.com',
+        'sandbox.aptude.com',
     )
 
 

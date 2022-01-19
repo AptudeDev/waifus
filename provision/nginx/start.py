@@ -50,7 +50,8 @@ configs = [
     'sigrha_gateway.conf',
     'sandbox_sigrha_react.conf',
     'sandbox_sigrha_client.conf',
-    'sandbox_sigrha_opportunities.conf', 'sandbox_sigrha_users.conf',
+    'sandbox_sigrha_opportunities.conf',
+    #'sandbox_sigrha_users.conf',
     'sandbox_sigrha_gateway.conf',
 ]
 

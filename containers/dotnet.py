@@ -49,13 +49,13 @@ class Dotnet( Centos_7 ):
             '/home/chibi/projects/Gateway__main/Gateway/Gateway/',
         ),
         ( "systemd/systemd.py", 'enable', 'cls.client_service' ),
-        ( "systemd/systemd.py", 'start', 'cls.client_service' ),
+        ( "systemd/systemd.py", 'restart', 'cls.client_service' ),
 
         ( "systemd/systemd.py", 'enable', 'cls.opportunities_service' ),
-        ( "systemd/systemd.py", 'start', 'cls.opportunities_service' ),
+        ( "systemd/systemd.py", 'restart', 'cls.opportunities_service' ),
 
         ( "systemd/systemd.py", 'enable', 'cls.gateway_service' ),
-        ( "systemd/systemd.py", 'start', 'cls.gateway_service' ),
+        ( "systemd/systemd.py", 'restart', 'cls.gateway_service' ),
     )
     env_vars = {
         'HOME': '/root/'

@@ -19,7 +19,7 @@ class Nodejs( Centos_7 ):
             '/home/chibi/projects/sigrha-react__main/' ),
         ( "systemd/cp.py", 'cls.service_path' ),
         ( "systemd/systemd.py", 'enable', 'cls.service_name' ),
-        ( "systemd/systemd.py", 'start', 'cls.service_name' ),
+        ( "systemd/systemd.py", 'restart', 'cls.service_name' ),
     )
 
 

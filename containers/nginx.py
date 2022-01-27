@@ -16,8 +16,7 @@ sites_enable = [
     'waifus',
 ]
 
-scripts_sites = tuple(
-    ( "nginx/enable.py", 'enable', site, ) for site in sites_enable )
+scripts_sites = ( "nginx/enable.py", 'enable', *sites_enable )
 
 
 class Nginx( Centos_7 ):
@@ -37,13 +36,14 @@ class Nginx( Centos_7 ):
 
 class Ikaros( Nginx ):
     extra_hosts = (
-        'kibana', 'waifus', 'sigrha.com.mx',
-        'api.sigrha.client.aptude.com',
-        'api.sigrha.opportunities.aptude.com',
+        'waifus', 'sigrha.com',
+        'api.client.sigrha.com',
+        'api.opportunities.sigrha.com',
         'api.sandbox.client.sigrha.com',
         'api.sandbox.opportunities.sigrha.com',
         'api.sandbox.sigrha.com',
         'sandbox.sigrha.com',
+        'kibana.sigrha.com',
     )
 
 

@@ -58,7 +58,7 @@ fs.file-max = 2097152
         'chibi_lxc', 'up',
         'Chii',
         #'Chii', 'Chino',
-        'Asuka', 'Mitsuha', 'Kurumi', 'Kaoru'
+        'Asuka', 'Mitsuha', 'Kurumi', 'Kaoru',
         'Ikaros',
         'Misuzu', 'Pochi', 'Tohru' ).run()
     #Command(

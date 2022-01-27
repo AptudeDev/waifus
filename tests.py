@@ -3,12 +3,14 @@ import requests
 
 
 hosts = [
-    'kibana', 'waifus', 'sigrha.com.mx',
-    'api.sigrha.client.aptude.com',
-    'api.sigrha.opportunities.aptude.com',
+    'kibana.sigrha.com', 'waifus',
+    'sigrha.com',
+    'api.client.sigrha.com',
+    'api.opportunities.sigrha.com',
+
+    'api.sandbox.sigrha.com',
     'api.sandbox.client.sigrha.com',
     'api.sandbox.opportunities.sigrha.com',
-    'api.sandbox.sigrha.com',
     'sandbox.sigrha.com',
 ]
 

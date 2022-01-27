@@ -23,9 +23,9 @@ class Django( Centos_7 ):
 
 
 class Shiro( Django ):
-    service_name = 'sigrha_users',
-    branch = 'master',
-    project_folder = '/home/chibi/projects/sigrha_users__master',
+    service_name = 'sigrha_users'
+    branch = 'master'
+    project_folder = '/home/chibi/projects/sigrha_users__master'
 
 
 class Shionji( Django ):

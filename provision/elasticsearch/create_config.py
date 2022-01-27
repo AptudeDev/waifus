@@ -106,7 +106,10 @@ if __name__ == "__main__":
     else:
         f = service.open( chibi_file_class=Chibi_systemd )
         result = f.read()
-        del result.service.TimeoutSec
+        try:
+            del result.service.TimeoutSec
+        except KeyError:
+            pass
         result.service.TimeoutSec = '900'
         f.write( result )
 

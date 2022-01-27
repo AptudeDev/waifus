@@ -5,7 +5,7 @@ class Centos_7( Container ):
     name = 'centos_8'
     distribution = 'centos'
     arch = 'amd64'
-    version = '8'
+    version = '7'
     delegate=False
     provision_folders = {
         'scripts': 'provision'

@@ -9,7 +9,7 @@ from chibi_command.nix import Systemctl
 from chibi_command import Command
 from chibi_command.centos import Iptables
 from chibi_command.sysctl import Sysctl
-from chibi_command import lxc
+from chibi_command.lxc import lxc
 from chibi.file.snippets import ln
 from chibi.file.snippets import cd
 
@@ -38,7 +38,14 @@ if __name__ == "__main__":
 *    soft    nofile 65536
 *    hard    nofile 65536
         """ )
-    first_machine = lxc.Destroy( '-n', 'test_machine' )
+
+    Chibi_path( '/etc/sysctl.d/99-sysctl.conf' ).open().write(
+        """
+vm.max_map_count=262144
+fs.file-max = 2097152
+"""
+    )
+    first_machine = lxc.Destroy( '-n', 'test_machine' ).run()
     first_machine = lxc.Create( '-n', 'test_machine' )
     first_machine.template( 'download' )
     first_machine.parameters(
@@ -53,7 +60,7 @@ if __name__ == "__main__":
         #'Chii', 'Chino',
         'Asuka', 'Mitsuha', 'Kurumi', 'Kaoru'
         'Ikaros',
-        'Misuzu' ).run()
+        'Misuzu', 'Pochi', 'Tohru' ).run()
     #Command(
     #    'chibi_lxc', 'provision',
     #    'Ikaros', 'Chii', 'Asuka', 'Mitsuha' ).run()

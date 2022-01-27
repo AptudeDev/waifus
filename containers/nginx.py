@@ -1,12 +1,30 @@
 from .base import Centos_7
 
 
+sites_enable = [
+    'default',
+    'kibana',
+    'sandbox_sigrha_client',
+    'sandbox_sigrha_gateway',
+    'sandbox_sigrha_opportunities',
+    'sandbox_sigrha_react',
+    'sigrha_client',
+    'sigrha_gateway',
+    'sigrha_opportunities',
+    'sigrha_react',
+    'sigrha_users',
+    'waifus',
+]
+
+scripts_sites = tuple(
+    ( "nginx/enable.py", 'enable', site, ) for site in sites_enable )
+
+
 class Nginx( Centos_7 ):
     scripts = (
         "nginx/install.py",
         "nginx/provision.py",
-        ( "nginx/enable.py", 'enable', 'waifus', 'kibana' ),
-        ( "nginx/enable.py", 'enable', 'default' ),
+        *scripts_sites,
 
         ( "systemd/systemd.py", 'enable', 'nginx.service' ),
         ( "systemd/systemd.py", 'restart', 'nginx.service' ),

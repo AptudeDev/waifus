@@ -11,6 +11,7 @@ ExecStart=/usr/share/dotnet/dotnet /home/chibi/projects/Gateway__main/Gateway/Ga
 
 KillSignal=SIGINT
 SyslogIdentifier=gateway_service
+EnvironmentFile=/etc/systemd/system/sigrha_gateway_test.env
 
 Restart=on-failure
 RestartSec=5s

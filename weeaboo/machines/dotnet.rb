@@ -104,9 +104,9 @@ end
 class Kaoru < Dot_net
 	def initialize()
 		super(
-			:client_branch => 'main',
-			:opportunities_branch => 'main',
-			:gateway_branch => 'main',
+			:client_branch => 'development',
+			:opportunities_branch => 'development',
+			:gateway_branch => 'development',
 			:login_branch => 'main',
 
 			:service_gateway => 'sigrha_gateway_test',

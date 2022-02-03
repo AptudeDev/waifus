@@ -25,14 +25,18 @@ class Django < Base_centos
 
 			Python.new( "provision/django/provision.py",
 				args: [ params.fetch( :project_folder, '' ) ] ),
-
+			Script.new( "provision/django/migrate.sh".
+				args: [ 
+					'/home/chibi/projects/sigrha_users__master/',
+					'/etc/systemd/system/sigrha_users.env',
+				] ),
 
 			Python.new( "provision/systemd/cp.py",
 				args: [ "django/#{service_name}.service" ] ),
 			Python.new( "provision/systemd/systemd.py",
 				args: [ 'enable', "#{service_name}.service" ] ),
 			Python.new( "provision/systemd/systemd.py",
-				args: [ 'start', "#{service_name}.service" ] ),
+				args: [ 'restart', "#{service_name}.service" ] ),
 		]
 	end
 end

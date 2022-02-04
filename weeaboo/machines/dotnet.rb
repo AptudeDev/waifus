@@ -58,19 +58,20 @@ class Dot_net < Base_centos
 					params.fetch( :gateway_repo_name, 'main', ),
 				] ),
 
-			Script.new( "provision/dotnet/database_migration.sh",
+			Script.new( "provision/dotnet/#{params.fetch( :migration_mode )}.sh",
 				args: [
 					'/home/chibi/projects/clients_service__main/API_Clients/',
 					"/etc/systemd/system/#{params.fetch( :service_client )}.env",
 				] ),
-			Script.new( "provision/dotnet/database_migration.sh",
+			Script.new( "provision/dotnet/#{params.fetch( :migration_mode )}.sh",
 				args: [
 					'/home/chibi/projects/opportunities_service__main/Opportunities/',
 					"/etc/systemd/system/#{params.fetch( :service_oportunities )}.env",
 				] ),
-			Script.new( "provision/dotnet/build_project.sh",
+			Script.new( "provision/dotnet/#{params.fetch( :build_mode )}.sh",
 				args: [
 					'/home/chibi/projects/Gateway__main/Gateway/Gateway/',
+					"/etc/systemd/system/#{params.fetch( :service_gateway )}.env",
 				] ),
 
 			Python.new( "provision/systemd/systemd.py",
@@ -95,6 +96,8 @@ class Mitsuha < Dot_net
 			:service_gateway => 'sigrha_gateway',
 			:service_client => 'sigrha_clients',
 			:service_oportunities => 'sigrha_opportunities',
+			:migration_mode => 'database_migration',
+			:build_mode => 'build_project'
 		)
 		@abstract = false
 		@name = 'Mitsuha'
@@ -112,6 +115,8 @@ class Kaoru < Dot_net
 			:service_gateway => 'sigrha_gateway_test',
 			:service_client => 'sigrha_clients_test',
 			:service_oportunities => 'sigrha_opportunities_test',
+			:migration_mode => 'database_migration_debug',
+			:build_mode => 'build_project_debug'
 		)
 		@abstract = false
 		@name = 'Kaoru'

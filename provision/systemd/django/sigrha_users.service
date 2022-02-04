@@ -12,9 +12,7 @@ PIDFile=/run/gunicorn/pid
 # RuntimeDirectory=gunicorn
 EnvironmentFile=/etc/systemd/system/sigrha_users.env
 WorkingDirectory=/home/chibi/projects/sigrha_users__master
-ExecStart=/usr/local/bin/gunicorn \
-	-w $SIGRHA_USERS__WEB__THREADS \
-	--worker-class gevent -b 0.0.0.0:8000 sigrha_users.wsgi
+ExecStart=/usr/local/bin/gunicorn -w $SIGRHA_USERS__WEB__THREADS --worker-class gevent -b 0.0.0.0:8000 sigrha_users.wsgi
 
 ExecStop=/bin/kill -s TERM $MAINPID
 ExecReload=/bin/kill -s HUP $MAINPID

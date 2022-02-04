@@ -18,6 +18,8 @@ class Django < Base_centos
 			Python.new( "provision/copy_host.py" ),
 			Python.new( "provision/repos/cp_all_repos.py" ),
 			Python.new( "provision/ssh/provision.py" ),
+			Python.new( "provision/systemd/cp.py",
+				args: [ "django/#{service_name}.service" ] ),
 			Python.new( "provision/mariadb/install_client.py" ),
 
 			Python.new( "provision/git_clone.py",
@@ -30,8 +32,6 @@ class Django < Base_centos
 					'/home/chibi/projects/sigrha_users__master/',
 					'/etc/systemd/system/sigrha_users.env',
 				] ),
-			Python.new( "provision/systemd/cp.py",
-				args: [ "django/#{service_name}.service" ] ),
 			Python.new( "provision/systemd/systemd.py",
 				args: [ 'enable', "#{service_name}.service" ] ),
 			Python.new( "provision/systemd/systemd.py",

@@ -6,8 +6,8 @@ Type=forking
 User=chibi
 Group=chibi
 
-WorkingDirectory=/home/chibi/projects/clients_service__main/API_Clients/bin/Release/netcoreapp3.1/
-ExecStart=/usr/share/dotnet/dotnet /home/chibi/projects/clients_service__main/API_Clients/bin/Release/netcoreapp3.1/API_Clients.dll
+WorkingDirectory=/home/chibi/projects/clients_service__main/API_Clients/bin/Debug/netcoreapp3.1/
+ExecStart=/usr/share/dotnet/dotnet /home/chibi/projects/clients_service__main/API_Clients/bin/Debug/netcoreapp3.1/API_Clients.dll
 
 KillSignal=SIGINT
 SyslogIdentifier=Sigrha_client_service

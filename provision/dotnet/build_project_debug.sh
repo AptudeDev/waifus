@@ -7,5 +7,5 @@ cat $2
 export $(grep -v '^#' $2 | xargs -d '\n')
 PATH="$PATH:/root/.dotnet/tools"
 
-dotnet build --configuration Release
+dotnet build --configuration Debug
 cowsay "End build project $1"

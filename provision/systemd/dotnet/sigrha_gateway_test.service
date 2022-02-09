@@ -6,8 +6,8 @@ Type=forking
 User=chibi
 Group=chibi
 
-WorkingDirectory=/home/chibi/projects/Gateway__main/Gateway/Gateway/bin/Release/netcoreapp3.1/
-ExecStart=/usr/share/dotnet/dotnet /home/chibi/projects/Gateway__main/Gateway/Gateway/bin/Release/netcoreapp3.1/Gateway.dll
+WorkingDirectory=/home/chibi/projects/Gateway__main/Gateway/Gateway/bin/Debug/netcoreapp3.1/
+ExecStart=/usr/share/dotnet/dotnet /home/chibi/projects/Gateway__main/Gateway/Gateway/bin/Debug/netcoreapp3.1/Gateway.dll
 
 KillSignal=SIGINT
 SyslogIdentifier=gateway_service

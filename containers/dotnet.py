@@ -5,14 +5,20 @@ class Dotnet( Centos_7 ):
     client_branch = 'main'
     client_service = 'sigrha_clients.service'
     client_service_path = 'dotnet/sigrha_clients.service'
+    client_service_env = 'dotnet/sigrha_clients_test.env'
 
     gateway_branch = 'main'
     gateway_service = 'sigrha_gateway.service'
     gateway_service_path = 'dotnet/sigrha_gateway.service'
+    gateway_service_env = 'dotnet/sigrha_gateway.env'
 
     opportunities_branch = 'main'
     opportunities_service_path = 'dotnet/sigrha_opportunities.service'
     opportunities_service = 'sigrha_opportunities.service'
+    opportunities_env = 'sigrha_opportunities.env'
+
+    migration_mode = 'dotnet/database_migration.sh'
+    build_mode = 'dotnet/build_project.sh'
 
     scripts = (
         'ssh/provision.py',
@@ -35,18 +41,19 @@ class Dotnet( Centos_7 ):
             'git@github.com:AptudeSiGRHA/Gateway.git',
             'cls.gateway_branch', 'main' ),
         (
-            'dotnet/database_migration.sh',
+            'cls.migration_mode',
             '/home/chibi/projects/clients_service__main/API_Clients/',
-            '/etc/systemd/system/sigrha_clients.env',
+            'cls.client_service_env',
         ),
         (
-            'dotnet/database_migration.sh',
+            'cls.migration_mode',
             '/home/chibi/projects/opportunities_service__main/Opportunities/',
-            '/etc/systemd/system/sigrha_opportunities.env',
+            'cls.opportunities_env',
         ),
         (
-            'dotnet/build_project.sh',
+            'cls.build_mode',
             '/home/chibi/projects/Gateway__main/Gateway/Gateway/',
+            'cls.gateway_service_env',
         ),
         ( "systemd/systemd.py", 'enable', 'cls.client_service' ),
         ( "systemd/systemd.py", 'restart', 'cls.client_service' ),
@@ -73,9 +80,14 @@ class Kaoru( Dotnet ):
 
     client_service = 'sigrha_clients_test.service'
     client_service_path = 'dotnet/sigrha_clients_test.service'
+    client_service_env = 'dotnet/sigrha_clients_test.env'
 
     gateway_service = 'sigrha_gateway.service_test'
     gateway_service_path = 'dotnet/sigrha_gateway_test.service'
+    gateway_service_env = 'dotnet/sigrha_gateway_test.env'
 
     opportunities_service_path = 'dotnet/sigrha_opportunities_test.service'
     opportunities_service = 'sigrha_opportunities_test.service'
+    opportunities_env = 'sigrha_opportunities_test.env'
+    migration_mode = 'dotnet/database_migration_debug.sh'
+    build_mode = 'dotnet/build_project_debug.sh'

@@ -48,7 +48,7 @@ def is_nginx( d ):
 inputs = list( itertools.filterfalse( is_nginx, inputs ) )
 
 
-for nginx_config in nginx_sites_enabled.ls():
+for nginx_config in nginx_sites_enabled.ls( dirs=False ):
     nginx_data = nginx_config.open( chibi_file_class=Chibi_nginx ).read()
     try:
         name = nginx_data.server.server_name

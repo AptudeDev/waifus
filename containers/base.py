@@ -3,10 +3,10 @@ from chibi_lxc import Container
 
 class Centos_7( Container ):
     name = 'centos_8'
-    distribution = 'centos'
+    distribution = 'rockylinux'
     arch = 'amd64'
-    version = '7'
-    delegate=False
+    version = '8'
+    #delegate=False
     provision_folders = {
         'scripts': 'provision'
     }

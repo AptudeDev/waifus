@@ -23,12 +23,13 @@ if __name__ == "__main__":
     folders = (
         "/var/log/nginx",
         "/etc/nginx/sites_available",
-        "/etc/nginx/sites_enabled"
+        "/etc/nginx/sites_enabled",
+        "/etc/nginx/cert"
     )
     for folder in folders:
         Chibi_path( folder ).mkdir( verbose=True )
 
-    folders = ( 'conf.d', "sites_available" )
+    folders = ( 'conf.d', "sites_available", 'cert' )
 
     nginx_folder = Chibi_path( '/etc/nginx/' )
 

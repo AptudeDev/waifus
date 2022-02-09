@@ -69,6 +69,7 @@ if __name__ == "__main__":
         help="configuracion que se quire desabilitar" )
 
     args = parser.parse_args()
+    print( vars( args ) )
     configs = args.config
     configs = list( ( f"{c}.conf" for c in configs ) )
     if args.command == 'enable':

@@ -23,7 +23,7 @@ class Nginx( Centos_7 ):
     scripts = (
         "nginx/install.py",
         "nginx/provision.py",
-        *scripts_sites,
+        scripts_sites,
 
         ( "systemd/systemd.py", 'enable', 'nginx.service' ),
         ( "systemd/systemd.py", 'restart', 'nginx.service' ),

@@ -57,6 +57,9 @@ for nginx_config in nginx_sites_enabled.ls( dirs=False ):
         error_log = nginx_data.server.error_log
     except ( KeyError, AttributeError ):
         continue
+    if 'waifus' in name:
+        print( f'ignorando {name} para evitar loginseption' )
+        continue
     if '$hostname' in name:
         name = name.replace( '$hostname', hostname )
     print( f'preparando "{name}" con "{access_log}" y "{error_log}"' )

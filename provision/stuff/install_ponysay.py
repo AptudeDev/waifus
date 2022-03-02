@@ -18,6 +18,7 @@ file_check = file_check_path.open()
 version_to_check = "ponysay\n".format( file=__file__, )
 
 
+"""
 if __name__ == "__main__" and not version_to_check in file_check:
     cowsay( "Starting install for ponysay" )
     Dnf.config_manager( 'powertools' )
@@ -37,3 +38,4 @@ if __name__ == "__main__" and not version_to_check in file_check:
     print( '\033[0m' )
     cowsay( 'termino de instalar ponysay' )
     file_check.append( version_to_check )
+"""
